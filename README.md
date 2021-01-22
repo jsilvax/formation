@@ -110,31 +110,19 @@ The setup process will install:
 <summary>Communication</summary>
 
 * [Bear](http://www.bear-writer.com/) for writing and previewing markdown.
-* [Skype](https://www.skype.com/en/) for free calls to friends and family.
 * [Slack](https://slack.com/) where work happens.
-* [Ulysses](https://ulyssesapp.com/) for long-form writing.
 </details>
 
 <details>
 <summary>Utilities</summary>
 
-* [1Password](https://1password.com/) for password management.
 * [Dropbox](https://www.dropbox.com) for cloud file storage.
-* [Divvy](http://mizage.com/divvy/) for better window management.
-* [Encrypto](https://macpaw.com/encrypto) for securing files.
-* [ExpressVPN](https://www.expressvpn.com/) for privacy.
-* [HyperDock](https://bahoom.com/hyperdock/)
-* [Karabiner](https://pqrs.org/osx/karabiner/) for keyboard mapping.
-* [Renamer](https://renamer.com/) for easy file renaming.
 </details>
 
 <details>
 <summary>Miscellaneous</summary>
 
-* [Gifox](https://gifox.io/) for GIF making.
-* [Rocket](http://matthewpalmer.net/rocket/) for Slack-like emojis.
 * [Spotify](https://www.spotify.com/) for music.
-* [VLC](http://www.videolan.org/) for a better media player.
 </details>
 
 <details>
@@ -144,7 +132,6 @@ The setup process will install:
 * [Brave](https://brave.com/) for web browsing without ads.
 * [Chrome](https://www.google.com/chrome/browser/desktop/) for fast and free web browsing.
 * [Firefox](https://www.mozilla.org/en-US/firefox/new/) for web browsing and testing.
-* [TorBrowser](https://www.torproject.org/projects/torbrowser.html.en) for super secret web browsing.
 </details>
 
 <sub>See [`swag`](swag) for the full list of apps that will be installed. Adjust it to your personal taste.</sub>

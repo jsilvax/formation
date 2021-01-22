@@ -58,7 +58,7 @@ check_internet_connection
 # PROMPT: Password
 ###############################################################################
 #chapter "Caching password…"
-#ask_for_sudo
+ask_for_sudo
 
 ###############################################################################
 # PROMPT: SSH Key
@@ -219,20 +219,38 @@ if [ -e $cwd/swag/npm ]; then
 	done
 fi
 
+###############################################################################
+# Creating Initial Directories
+###############################################################################
+
+chapter "Creating directories"
+DIRECTORIES=(
+    $HOME/Document/htdocs
+    $HOME/Document/workspace
+    $HOME/Desktop/screenshots
+)
+
+step "Making directories…"
+for dir in ${DIRECTORIES[@]}; do
+    if [ -e $dir ]; then
+		mkdir $dir; printf "Made $dir"
+	else 
+		print_success_muted "$dir exists. Skipped.";
+done
 
 ###############################################################################
 # OPTIONAL: Customizations
 ###############################################################################
-# chapter "Adding hot sauce…"
-# if [ -f "$HOME/.hot-sauce" ]; then
-# 	if ask "Do you want to add hot sauce?" Y; then
-# 		. "$HOME/.hot-sauce"; printf "\n  You got hot sauce in your bag. 🔥 ${bold}Swag.${normal}\n";
-# 	else
-# 		print_success_muted "Hot sauce declined. Skipped.";
-# 	fi
-# else
-# 	print_warning "No ~/.hot-sauce found. Skipping."
-# fi
+chapter "Adding hot sauce…"
+if [ -f "$HOME/.formation-custom" ]; then
+	if ask "Do you want to add customizations?" Y; then
+		. "$HOME/.formation-custom"; printf "\n  You got hot sauce in your bag (customizations). 🔥 ${bold}Swag.${normal}\n";
+	else
+		print_success_muted "Hot sauce declined. Skipped.";
+	fi
+else
+	print_warning "No ~/.formation-custom found. Skipping."
+fi
 
 ###############################################################################
 # 🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋
