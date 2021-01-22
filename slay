@@ -57,8 +57,8 @@ check_internet_connection
 ###############################################################################
 # PROMPT: Password
 ###############################################################################
-chapter "Caching password…"
-ask_for_sudo
+#chapter "Caching password…"
+#ask_for_sudo
 
 ###############################################################################
 # PROMPT: SSH Key
@@ -90,21 +90,22 @@ fi
 # -----------------------------------------------------------------------------
 # Bash-it
 # -----------------------------------------------------------------------------
-if [ -d "$HOME/.bash_it" ]; then
-	print_success_muted "Bash-it already installed. Skipping."
-else
-	step "Installing Bash-it…"
-	git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
-	~/.bash_it/install.sh --silent --no-modify-config
-	print_success "Bash-it installed!"
-fi
+# if [ -d "$HOME/.bash_it" ]; then
+# 	print_success_muted "Bash-it already installed. Skipping."
+# else
+# 	step "Installing Bash-it…"
+# 	git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+# 	~/.bash_it/install.sh --silent --no-modify-config
+# 	print_success "Bash-it installed!"
+# fi
 
 # -----------------------------------------------------------------------------
 # NVM
 # -----------------------------------------------------------------------------
 if [ -x nvm ]; then
 	step "Installing NVM…"
-	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 	print_success "NVM installed!"
 	step "Installing latest Node…"
 	nvm install node
@@ -121,7 +122,7 @@ fi
 # -----------------------------------------------------------------------------
 if ! [ -x "$(command -v brew)" ]; then
 	step "Installing Homebrew…"
-	curl -fsS 'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	export PATH="/usr/local/bin:$PATH"
 	print_success "Homebrew installed!"
 else
@@ -133,6 +134,17 @@ if brew list | grep -Fq brew-cask; then
 	brew uninstall --force brew-cask
 	print_success "Homebrew-Cask uninstalled!"
 fi
+###############################################################################
+# mongoDB data/db folder 
+###############################################################################
+
+if [ -e /data/db ]; then
+	step "Making mongoDB /data/db directory"
+	mkdir -p /data/db;
+	sudo chown -R `id -un` /data/db
+	print_success "mkdir of /data/db was successful"
+fi
+
 
 ###############################################################################
 # INSTALL: brews
@@ -211,16 +223,16 @@ fi
 ###############################################################################
 # OPTIONAL: Customizations
 ###############################################################################
-chapter "Adding hot sauce…"
-if [ -f "$HOME/.hot-sauce" ]; then
-	if ask "Do you want to add hot sauce?" Y; then
-		. "$HOME/.hot-sauce"; printf "\n  You got hot sauce in your bag. 🔥 ${bold}Swag.${normal}\n";
-	else
-		print_success_muted "Hot sauce declined. Skipped.";
-	fi
-else
-	print_warning "No ~/.hot-sauce found. Skipping."
-fi
+# chapter "Adding hot sauce…"
+# if [ -f "$HOME/.hot-sauce" ]; then
+# 	if ask "Do you want to add hot sauce?" Y; then
+# 		. "$HOME/.hot-sauce"; printf "\n  You got hot sauce in your bag. 🔥 ${bold}Swag.${normal}\n";
+# 	else
+# 		print_success_muted "Hot sauce declined. Skipped.";
+# 	fi
+# else
+# 	print_warning "No ~/.hot-sauce found. Skipping."
+# fi
 
 ###############################################################################
 # 🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋
